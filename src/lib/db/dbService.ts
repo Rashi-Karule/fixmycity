@@ -131,6 +131,12 @@ export const dbService = {
     longitude: number;
     landmark?: string;
     address: string;
+    state?: string;
+    district?: string;
+    jurisdiction_type?: 'URBAN' | 'RURAL';
+    local_body_name?: string;
+    lgd_code?: string;
+    ward_or_village?: string;
     priority?: PriorityLevel;
     image_urls?: string[];
   }): Promise<Complaint> {
@@ -160,6 +166,12 @@ export const dbService = {
       longitude: data.longitude,
       landmark: data.landmark,
       address: data.address,
+      state: data.state,
+      district: data.district,
+      jurisdiction_type: data.jurisdiction_type,
+      local_body_name: data.local_body_name,
+      lgd_code: data.lgd_code,
+      ward_or_village: data.ward_or_village,
       status: 'PENDING',
       priority,
       deadline,
@@ -383,10 +395,25 @@ export const dbService = {
       const lon = parseFloat(row['longitude'] || row['lon'] || '73.8567');
       const radius = parseFloat(row['service_radius_km'] || '6.0');
 
+      // Duplicate detection by office_code
+      if (db.offices.some((o) => o.office_code.toLowerCase() === office_code.toLowerCase())) {
+        errors.push(`Row ${i + 1}: Duplicate office_code "${office_code}" already registered.`);
+        continue;
+      }
+
       if (!office_name || isNaN(lat) || isNaN(lon)) {
         errors.push(`Row ${i + 1}: Invalid name or coordinates`);
         continue;
       }
+
+      // Validate geographic bounds within India (approx 6°N - 37.6°N, 68.7°E - 97.4°E)
+      if (lat < 6.0 || lat > 37.6 || lon < 68.7 || lon > 97.4) {
+        errors.push(`Row ${i + 1}: Coordinates (${lat}, ${lon}) fall outside Indian geographic boundaries.`);
+        continue;
+      }
+
+      const phoneRaw = (row['phone'] || '').trim();
+      const verifiedPhone = phoneRaw && phoneRaw !== '020-25501000' && phoneRaw !== '020-25430012' ? phoneRaw : 'Not yet verified';
 
       const newOffice: DepartmentOffice = {
         id: `f-imported-${Date.now()}-${i}`,
@@ -397,10 +424,20 @@ export const dbService = {
         latitude: lat,
         longitude: lon,
         service_radius_km: radius,
-        jurisdiction_area: row['jurisdiction_area'] || 'City Ward',
-        phone: row['phone'] || '020-25501000',
-        contact_person: row['contact_person'] || 'Ward Officer',
+        jurisdiction_area: row['jurisdiction_area'] || 'Regional Unit',
+        phone: verifiedPhone,
+        contact_person: row['contact_person'] || 'Duty Officer',
         active: true,
+        state: row['state'] || 'Unspecified State',
+        district: row['district'] || 'Unspecified District',
+        local_body_type: (row['local_body_type'] as any) || 'MUNICIPAL_CORPORATION',
+        local_body_name: row['local_body_name'] || 'Local Civic Body',
+        lgd_code: row['lgd_code'] || 'LGD-IMPORT',
+        source_authority: 'Admin Verified CSV Import',
+        source_url: 'https://lgdirectory.gov.in/',
+        verification_status: 'VERIFIED',
+        last_verified_at: new Date().toISOString(),
+        data_imported_at: new Date().toISOString(),
       };
 
       db.offices.push(newOffice);

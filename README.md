@@ -8,7 +8,7 @@
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v4-38B2AC)](https://tailwindcss.com)
 [![Bilingual](https://img.shields.io/badge/Language-English%20%7C%20%E0%A4%B9%E0%A4%BF%E0%A4%82%E0%A4%A6%E0%A4%B0%E0%A5%80-E07B2E)](#bilingual-support)
 
-A full-stack, enterprise-grade civic issue reporting and government accountability web application developed as a College Idea Lab project prototype. Built with realistic Indian municipal administration data (Pune Municipal Corporation area), it empowers citizens to report civic infrastructure grievances, automatically detects duplicate issues, dispatches reports to the nearest eligible ward office using dynamic radius expansion, enforces strict priority-based SLA deadlines, and triggers automated administrative escalations when deadlines are breached.
+A full-stack, enterprise-grade civic issue reporting and government accountability web application developed as an open civic technology prototype. Designed to support deployment across Indian States, Union Territories, Urban Local Bodies (ULBs), and Rural Panchayats (PRIs), it empowers citizens to report civic infrastructure grievances, automatically detects duplicate issues, dispatches reports to the nearest eligible verified office using jurisdiction-aware routing and dynamic radius expansion, enforces strict priority-based SLA deadlines, and triggers automated administrative escalations when deadlines are breached.
 
 ---
 
@@ -175,5 +175,8 @@ Run `npm test` to verify the 23 test suites covering all required scenarios:
 
 ---
 
-## 📜 Academic Project Notice
-FixMyCity is developed as a college prototype for demonstrative and academic evaluation. Department office locations, citizen names, and phone numbers are simulated for demonstration within the Pune Municipal Corporation jurisdiction area and do not represent an official integration with municipal authorities.
+## 📜 Prototype & Data Integrity Notice
+FixMyCity is developed as a civic technology prototype for demonstration and evaluation. Official government integration and authorization depend on the relevant public authority.
+- Department directory records, office locations, citizen names, and phone numbers are provided with clear provenance tags (`VERIFIED` vs `SAMPLE_DATA`).
+- For complete research and government source mapping (GIGW 3.0, LGD, OGD, CPGRAMS, UMANG, UIDAI), see [`docs/government-data-sources.md`](file:///Users/rashikarule/Documents/fixmycity/docs/government-data-sources.md).
+- For identity verification safeguards and Aadhaar Act compliance, see [`docs/identity-verification.md`](file:///Users/rashikarule/Documents/fixmycity/docs/identity-verification.md).

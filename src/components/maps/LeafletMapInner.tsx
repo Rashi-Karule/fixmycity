@@ -25,8 +25,8 @@ export default function LeafletMapInner({
   searchRadiusMeters,
   onLocationSelect,
   interactive = true,
-  center = [18.5285, 73.8480], // Default: Pune Municipal Center
-  zoom = 13,
+  center = [20.5937, 78.9629], // Geographic center of India (Pan-India default)
+  zoom = 5,
   height = '450px',
 }: LeafletMapInnerProps) {
   const mapContainerRef = useRef<HTMLDivElement>(null);

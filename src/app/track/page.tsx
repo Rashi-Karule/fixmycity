@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import Navbar from '@/components/layout/Navbar';
+import PublicNav from '@/components/layout/PublicNav';
 import Footer from '@/components/layout/Footer';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import { CategoryBadge } from '@/components/ui/CategoryBadge';
@@ -383,7 +383,7 @@ function TrackContent() {
 export default function TrackPage() {
   return (
     <div className="min-h-screen flex flex-col bg-[#F8FAFC]">
-      <Navbar />
+      <PublicNav />
       <main className="flex-1">
         <Suspense fallback={<div className="p-12 text-center text-xs">Loading tracker...</div>}>
           <TrackContent />

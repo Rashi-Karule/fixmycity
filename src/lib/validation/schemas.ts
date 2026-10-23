@@ -28,8 +28,12 @@ export const CreateComplaintSchema = z.object({
     .max(150, 'Title cannot exceed 150 characters'),
   description: z
     .string()
-    .min(10, 'Description must be at least 10 characters')
-    .max(2000, 'Description cannot exceed 2000 characters'),
+    .max(2000, 'Description cannot exceed 2000 characters')
+    .refine((val) => !val || val.trim().length === 0 || val.trim().length >= 10, {
+      message: 'Description must be at least 10 characters if provided',
+    })
+    .optional()
+    .default(''),
   category: CivicCategoryEnum,
   suggested_category: CivicCategoryEnum.optional(),
   classification_confidence: z.number().min(0).max(1).optional(),
@@ -44,15 +48,34 @@ export const CreateComplaintSchema = z.object({
     .max(180, 'Valid longitude coordinate is required'),
   address: z.string().min(5, 'Specific location or address is required'),
   landmark: z.string().max(100).optional(),
+  state: z.string().optional(),
+  district: z.string().optional(),
+  jurisdiction_type: z.enum(['URBAN', 'RURAL']).optional(),
+  local_body_name: z.string().optional(),
+  lgd_code: z.string().optional(),
+  ward_or_village: z.string().optional(),
   priority: PriorityLevelEnum.default('MODERATE'),
   image_urls: z.array(z.string()).min(1, 'At least one photo evidence is required'),
 });
 
-export const UpdateStatusSchema = z.object({
-  status: ComplaintStatusEnum,
-  notes: z.string().max(1000).optional(),
-  resolution_image_url: z.string().url().optional().or(z.literal('')),
-});
+export const UpdateStatusSchema = z
+  .object({
+    status: ComplaintStatusEnum,
+    notes: z.string().max(1000).optional(),
+    resolution_image_url: z.string().url().optional().or(z.literal('')),
+  })
+  .refine(
+    (data) => {
+      if (data.status === 'RESOLVED') {
+        return !!data.notes && data.notes.trim().length >= 5;
+      }
+      return true;
+    },
+    {
+      message: 'Detailed resolution notes (minimum 5 characters) are required before marking an issue resolved.',
+      path: ['notes'],
+    }
+  );
 
 export const UpdatePrioritySchema = z.object({
   priority: PriorityLevelEnum,

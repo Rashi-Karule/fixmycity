@@ -1,7 +1,7 @@
 {
   "nav": {
     "title": "FixMyCity",
-    "subtitle": "Citizens Issue Reporting & Government Accountability System",
+    "subtitle": "India-Wide Civic Issue Reporting & Resolution Platform",
     "home": "Home",
     "reportIssue": "Report Issue",
     "trackComplaint": "Track Complaint",
@@ -17,7 +17,7 @@
   "roles": {
     "citizen": "Citizen",
     "employee": "Government Employee",
-    "admin": "Municipal Administrator"
+    "admin": "Executive Administrator"
   },
   "common": {
     "loading": "Loading...",
@@ -34,7 +34,7 @@
     "deadline": "Deadline",
     "overdue": "Overdue",
     "hoursLeft": "hours left",
-    "demoDataNotice": "Demonstration Prototype Mode — Realistic Indian Municipal Data",
+    "demoDataNotice": "Civic Technology Prototype — Verifiable Multi-Tier Public Administration Data",
     "na": "N/A"
   },
   "categories": {
@@ -60,9 +60,9 @@
     "STANDARD": "Standard (7 Days)"
   },
   "home": {
-    "badge": "College Prototype — Municipal Accountability Platform",
-    "headline": "Empowering Citizens, Enforcing Municipal Accountability",
-    "subheading": "Report civic infrastructure issues directly to the responsible municipal department. Every complaint is tracked against strict SLA deadlines with automated escalation.",
+    "badge": "Civic Technology Prototype — India-Wide Public Grievance Platform",
+    "headline": "Your City. Your Voice. Better Public Services.",
+    "subheading": "Report civic problems in seconds, track progress transparently, and see how communities are improving their surroundings.",
     "ctaReport": "Report an Issue",
     "ctaTrack": "Track a Complaint",
     "ctaExplore": "Explore Community Map",
@@ -72,7 +72,7 @@
     "step2Desc": "Auto-dispatches to the nearest eligible department office with SLA calculation.",
     "step3Title": "3. Transparent Resolution",
     "step3Desc": "Staff must submit photo evidence. Automated escalation triggers if SLA is breached.",
-    "statsTitle": "City-Wide Civic Pulse (Demo)",
+    "statsTitle": "Pan-India Civic Activity Pulse (Sample Data)",
     "totalComplaints": "Total Grievances",
     "resolvedComplaints": "Resolved On-Time",
     "pendingComplaints": "In Resolution Queue",
@@ -80,9 +80,9 @@
   },
   "report": {
     "title": "File a Civic Grievance",
-    "subtitle": "Provide issue details, location, and photos for immediate municipal action.",
+    "subtitle": "Provide issue details, location, and photos for immediate public action.",
     "issueTitle": "Issue Title / Summary",
-    "issueTitlePlaceholder": "e.g., Deep pothole causing skidding near Shivaji Park",
+    "issueTitlePlaceholder": "e.g., Deep pothole causing skidding on main road",
     "description": "Detailed Description",
     "descriptionPlaceholder": "Describe the exact problem, hazard level, and any landmarks...",
     "category": "Issue Category",
@@ -116,13 +116,13 @@
     "timeline": "Audit Timeline & Status Progression",
     "evidence": "Original Citizen Photo",
     "resolutionProof": "Staff Resolution Evidence",
-    "assignedOffice": "Assigned Municipal Office",
+    "assignedOffice": "Assigned Public Office",
     "slaRemaining": "Time Remaining",
-    "escalatedNotice": "This complaint has been escalated to Senior Municipal Administration due to SLA delay."
+    "escalatedNotice": "This complaint has been escalated to Senior Administration due to SLA delay."
   },
   "employee": {
     "title": "Department Operational Queue",
-    "subtitle": "Resolve grievances assigned to your authorized municipal department.",
+    "subtitle": "Resolve grievances assigned to your authorized public department.",
     "filterCategory": "Filter by Category",
     "filterPriority": "Filter Priority",
     "filterStatus": "Filter Status",
@@ -135,8 +135,8 @@
     "noAssignedComplaints": "No complaints pending in your department queue."
   },
   "admin": {
-    "title": "Municipal Executive Command Center",
-    "subtitle": "System-wide SLA monitoring, department performance, and escalation oversight.",
+    "title": "Executive Command Center",
+    "subtitle": "System-wide SLA monitoring, department performance, and escalation oversight across jurisdictions.",
     "tabOverview": "Overview & SLA Metrics",
     "tabEscalations": "Escalated Grievances",
     "tabDepartments": "Department Directory & CSV Import",
@@ -150,5 +150,19 @@
     "policyIntermediate": "Intermediate Urgency SLA",
     "policyModerate": "Moderate Urgency SLA",
     "policyStandard": "Standard Urgency SLA"
+  },
+  "auth": {
+    "mandatoryIdentityTitle": "Mandatory Citizen Identity Verification",
+    "mandatoryIdentitySubtitle": "All citizen grievance reports require verified identity to ensure administrative accountability and prevent automated spam.",
+    "methodMobileOtp": "Mobile OTP Verification (Authorized & Operational)",
+    "methodMobileOtpDesc": "Verified mobile possession authentication. Authorized for civic grievance tracking in this deployment.",
+    "methodAadhaar": "Aadhaar e-KYC (Statutory Provider Integration)",
+    "methodAadhaarDesc": "Statutory verification under Section 4(3) of the Aadhaar Act, 2016.",
+    "providerUnconfigured": "UIDAI AUA/KUA Provider Not Configured (Prototype Deployment)",
+    "providerUnconfiguredNotice": "Production Aadhaar verification requires an authorized AUA/KUA gateway with official e-KYC clearance and gazette notification. To protect citizen privacy, raw Aadhaar numbers or biometrics are never stored.",
+    "enterMobile": "10-Digit Mobile Number",
+    "enterOtp": "Verification OTP",
+    "verifyAndEnter": "Verify Identity & Enter Citizen Portal",
+    "switchToMobileOtp": "Authenticate via Active Mobile OTP Gate"
   }
 }

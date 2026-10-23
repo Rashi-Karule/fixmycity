@@ -70,14 +70,20 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // Run Smart Department Routing
+    // Run Smart Department Routing with Jurisdiction-awareness
     const routingDecision = routeComplaint(
       data.category,
       data.department_id,
       data.latitude,
       data.longitude,
       departments,
-      offices
+      offices,
+      {
+        state: data.state,
+        district: data.district,
+        localBodyName: data.local_body_name,
+        preferVerified: true,
+      }
     );
 
     const createdComplaint = await dbService.createComplaint({
@@ -97,6 +103,12 @@ export async function POST(req: NextRequest) {
       longitude: data.longitude,
       landmark: data.landmark,
       address: data.address,
+      state: data.state,
+      district: data.district,
+      jurisdiction_type: data.jurisdiction_type,
+      local_body_name: data.local_body_name,
+      lgd_code: data.lgd_code,
+      ward_or_village: data.ward_or_village,
       priority: data.priority,
       image_urls: data.image_urls,
     });

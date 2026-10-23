@@ -19,6 +19,13 @@ export type ComplaintStatus =
 
 export type PriorityLevel = 'INTERMEDIATE' | 'MODERATE' | 'STANDARD';
 
+export type IdentityVerificationStatus =
+  | 'VERIFIED_MOBILE_OTP'
+  | 'AADHAAR_PENDING_GOVT_INTEGRATION'
+  | 'UNVERIFIED';
+
+export type IdentityVerificationMethod = 'MOBILE_OTP' | 'AADHAAR_EKYC';
+
 export interface UserProfile {
   id: string;
   name: string;
@@ -28,6 +35,14 @@ export interface UserProfile {
   department_id?: string;
   department_name?: string;
   employee_id?: string;
+
+  // Mandatory Identity Verification Gate
+  identity_verified: boolean;
+  identity_verification_status: IdentityVerificationStatus;
+  identity_verification_method: IdentityVerificationMethod;
+  identity_verified_at?: string;
+  aadhaar_masked_token?: string; // e.g. "XXXXXXXX1012" - never raw 12 digits!
+
   created_at: string;
 }
 
@@ -43,6 +58,18 @@ export interface Department {
   active: boolean;
 }
 
+export type GovernmentLevel = 'CENTRAL' | 'STATE' | 'DISTRICT' | 'LOCAL_URBAN' | 'LOCAL_RURAL';
+
+export type LocalBodyType =
+  | 'MUNICIPAL_CORPORATION'
+  | 'MUNICIPALITY'
+  | 'TOWN_PANCHAYAT'
+  | 'GRAM_PANCHAYAT'
+  | 'BLOCK_PANCHAYAT'
+  | 'ZILLA_PARISHAD';
+
+export type OfficeVerificationStatus = 'VERIFIED' | 'NOT_YET_VERIFIED' | 'SAMPLE_DATA';
+
 export interface DepartmentOffice {
   id: string;
   department_id: string;
@@ -57,6 +84,20 @@ export interface DepartmentOffice {
   phone: string;
   contact_person: string;
   active: boolean;
+
+  // Pan-India & Provenance fields (Government-ready data integrity)
+  government_level?: GovernmentLevel;
+  state?: string;
+  district?: string;
+  local_body_type?: LocalBodyType;
+  local_body_name?: string;
+  lgd_code?: string;
+  official_website?: string;
+  source_url?: string;
+  source_authority?: string;
+  verification_status?: OfficeVerificationStatus;
+  last_verified_at?: string;
+  data_imported_at?: string;
 }
 
 export interface ComplaintAttachment {
@@ -157,6 +198,12 @@ export interface Complaint {
   longitude: number;
   landmark?: string;
   address: string;
+  state?: string;
+  district?: string;
+  jurisdiction_type?: 'URBAN' | 'RURAL';
+  local_body_name?: string;
+  lgd_code?: string;
+  ward_or_village?: string;
   status: ComplaintStatus;
   priority: PriorityLevel;
   deadline: string;

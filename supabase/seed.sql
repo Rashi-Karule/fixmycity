@@ -1,6 +1,6 @@
 -- ==============================================================================
--- FixMyCity: Seed Data for Prototype Demonstration
--- Realistic Indian Municipal Administration Data (Pune Municipal Corporation area)
+-- FixMyCity: Seed Data for Prototype Demonstration & Testing
+-- Sample Multi-Jurisdiction Civic Administration Data (Synthetic Test Records)
 -- ==============================================================================
 
 -- Priority Policies
@@ -21,8 +21,8 @@ VALUES
   'लोक निर्माण एवं सड़क बुनियादी ढांचा विभाग',
   'Responsible for asphalt repair, potholes, road dividers, pedestrian footpaths and bridges.',
   ARRAY['ROADS_INFRASTRUCTURE'],
-  'pwd.roads@punemunicipal.demo.in',
-  '020-25501001',
+  'pwd.roads@civic.sample.in',
+  '1800-CIVIC-ROADS (Sample)',
   true
 ),
 (
@@ -32,8 +32,8 @@ VALUES
   'ठोस अपशिष्ट प्रबंधन एवं स्वच्छता विभाग',
   'Door-to-door garbage collection, dump clearance, public dustbins and composting plants.',
   ARRAY['WASTE_MANAGEMENT'],
-  'swachhata@punemunicipal.demo.in',
-  '020-25501002',
+  'swachhata@civic.sample.in',
+  '1800-CIVIC-WASTE (Sample)',
   true
 ),
 (
@@ -43,8 +43,8 @@ VALUES
   'जल आपूर्ति एवं सीवरेज बोर्ड',
   'Municipal water supply, pipeline leakage resolution, contamination checks and drainage maintenance.',
   ARRAY['WATER_SUPPLY'],
-  'waterboard@punemunicipal.demo.in',
-  '020-25501003',
+  'waterboard@civic.sample.in',
+  '1800-CIVIC-WATER (Sample)',
   true
 ),
 (
@@ -54,8 +54,8 @@ VALUES
   'सड़क बत्तियां एवं विद्युत बुनियादी ढांचा',
   'Street lighting poles, LED bulb maintenance, electrical transformers and wire hazard clearing.',
   ARRAY['STREET_LIGHTING'],
-  'electrical@punemunicipal.demo.in',
-  '020-25501004',
+  'electrical@civic.sample.in',
+  '1800-CIVIC-LIGHT (Sample)',
   true
 ),
 (
@@ -65,8 +65,8 @@ VALUES
   'सार्वजनिक स्वास्थ्य एवं रोग नियंत्रण',
   'Mosquito fogging, stagnant water abatement, public toilets and community sanitation inspection.',
   ARRAY['PUBLIC_HEALTH', 'ENVIRONMENT_POLLUTION'],
-  'health@punemunicipal.demo.in',
-  '020-25501005',
+  'health@civic.sample.in',
+  '1800-CIVIC-HEALTH (Sample)',
   true
 ),
 (
@@ -76,8 +76,8 @@ VALUES
   'यातायात इंजीनियरिंग एवं परिवहन प्रभाग',
   'Traffic signages, zebra crossings, bus shelters, pedestrian safety barriers and traffic light timing.',
   ARRAY['TRAFFIC_TRANSPORT', 'SAFETY_GOVERNANCE'],
-  'traffic@punemunicipal.demo.in',
-  '020-25501006',
+  'traffic@civic.sample.in',
+  '1800-CIVIC-TRAFFIC (Sample)',
   true
 )
 ON CONFLICT (code) DO NOTHING;
@@ -88,71 +88,71 @@ VALUES
 (
   'f1000000-0000-0000-0000-000000000001',
   'd1000000-0000-0000-0000-000000000001',
-  'PWD Division Office — Shivajinagar Ward 8',
-  'OFF-PWD-SHIVAJI',
-  'Near Ghole Road Ward Office, Shivajinagar, Pune 411005',
+  'PWD Division Office — Western Zone',
+  'OFF-PWD-WEST',
+  'Civic Administration Complex, Ghole Road, Ward 8, Pune 411005',
   18.5314,
   73.8446,
   6.0,
-  'Shivajinagar, FC Road, Model Colony',
-  '020-25501101',
-  'Executive Engineer S. K. Deshmukh',
+  'Western Zone Wards',
+  'Not yet verified',
+  'Duty Executive Engineer',
   true
 ),
 (
   'f1000000-0000-0000-0000-000000000002',
   'd1000000-0000-0000-0000-000000000001',
-  'PWD Division Office — Kothrud Ward 12',
-  'OFF-PWD-KOTHRUD',
-  'Paud Road Municipal Complex, Kothrud, Pune 411038',
+  'PWD Division Office — South-West Sub-Division',
+  'OFF-PWD-SW',
+  'Civic Complex, Paud Road, Ward 12, Pune 411038',
   18.5074,
   73.8077,
   7.0,
-  'Kothrud, Karve Nagar, Vanaz',
-  '020-25501102',
-  'Assistant Engineer M. R. Patil',
+  'South-West Sector Wards',
+  'Not yet verified',
+  'Duty Assistant Engineer',
   true
 ),
 (
   'f2000000-0000-0000-0000-000000000001',
   'd2000000-0000-0000-0000-000000000002',
-  'Solid Waste Sanitation Center — Aundh Ward 2',
-  'OFF-SWM-AUNDH',
-  'DP Road Sanitation Yard, Aundh, Pune 411007',
+  'Solid Waste Sanitation Center — North Zone',
+  'OFF-SWM-NORTH',
+  'Sanitation Facility, DP Road, Ward 2, Pune 411007',
   18.5580,
   73.8070,
   5.0,
-  'Aundh, Baner, Pashan',
-  '020-25501201',
-  'Sanitary Inspector Anjali Kulkarni',
+  'North Zone Wards',
+  'Not yet verified',
+  'Sanitary Inspector (Duty)',
   true
 ),
 (
   'f3000000-0000-0000-0000-000000000001',
   'd3000000-0000-0000-0000-000000000003',
-  'Jal Board Maintenance Unit — Swargate Central',
-  'OFF-WATER-SWARGATE',
+  'Jal Board Maintenance Unit — Central Division',
+  'OFF-WATER-CENTRAL',
   'Water Works Campus, Swargate, Pune 411042',
   18.5018,
   73.8580,
   8.0,
-  'Swargate, Camp, Deccan, Shukrawar Peth',
-  '020-25501301',
-  'Superintending Engineer V. N. Joshi',
+  'Central Water Supply Division',
+  'Not yet verified',
+  'Duty Water Works Engineer',
   true
 ),
 (
   'f4000000-0000-0000-0000-000000000001',
   'd4000000-0000-0000-0000-000000000004',
-  'Streetlight Operations Hub — Hadapsar Ward 15',
-  'OFF-LIGHT-HADAPSAR',
-  'Gadital Municipal Terminal, Hadapsar, Pune 411028',
+  'Streetlight Operations Hub — Eastern Zone',
+  'OFF-LIGHT-EAST',
+  'Municipal Terminal Complex, Hadapsar, Pune 411028',
   18.5089,
   73.9260,
   9.0,
-  'Hadapsar, Magarpatta, Mundhwa',
-  '020-25501401',
-  'Electrical Inspector Ramesh Shinde',
+  'Eastern Operations Zone',
+  'Not yet verified',
+  'Duty Electrical Inspector',
   true
 )
 ON CONFLICT (office_code) DO NOTHING;
@@ -162,30 +162,30 @@ INSERT INTO profiles (id, name, phone, email, role, department_id, employee_id)
 VALUES
 (
   'u1000000-0000-0000-0000-000000000001',
-  'Aarav Sharma (Citizen)',
+  'Aarav Sharma (Sample Citizen)',
   '+91 98765 43210',
-  'citizen.aarav@example.com',
+  'citizen.aarav@sample.in',
   'CITIZEN',
   NULL,
   NULL
 ),
 (
   'u2000000-0000-0000-0000-000000000002',
-  'Er. Sunita Kulkarni (PWD Officer)',
+  'Duty Engineer (Public Works)',
   '+91 98220 11223',
-  'officer.pwd@punemunicipal.demo.in',
+  'officer.pwd@civic.sample.in',
   'EMPLOYEE',
   'd1000000-0000-0000-0000-000000000001',
   'EMP-PWD-409'
 ),
 (
   'u3000000-0000-0000-0000-000000000003',
-  'Dr. Rajeshwar Rao, IAS (Municipal Commissioner)',
+  'Executive Administrator',
   '+91 94220 99887',
-  'commissioner@punemunicipal.demo.in',
+  'admin@civic.sample.in',
   'ADMIN',
   NULL,
-  'ADM-PMC-001'
+  'ADM-EXEC-001'
 )
 ON CONFLICT (id) DO NOTHING;
 

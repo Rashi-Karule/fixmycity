@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Navbar from '@/components/layout/Navbar';
+import PublicNav from '@/components/layout/PublicNav';
 import Footer from '@/components/layout/Footer';
 import CivicMap from '@/components/maps/CivicMap';
 import { ComplaintCard } from '@/components/complaints/ComplaintCard';
@@ -55,7 +55,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F8FAFC]">
-      <Navbar />
+      <PublicNav />
 
       <main className="flex-1">
         {/* Hero Section */}
@@ -239,10 +239,10 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
             <div>
               <h2 className="text-2xl font-bold text-[#17304F] font-heading">
-                City-Wide Civic Pulse (Pune Demonstration Area)
+                Pan-India Civic Activity Pulse
               </h2>
               <p className="text-xs text-slate-500 mt-1">
-                Live complaints pinned by category and resolution state across municipal wards.
+                Live complaints pinned by category and resolution state across urban local bodies and rural Panchayats.
               </p>
             </div>
             <Link
